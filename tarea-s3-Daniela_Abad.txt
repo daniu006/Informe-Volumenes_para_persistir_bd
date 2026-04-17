@@ -1,0 +1,50 @@
+ 1  docker run -d   --name server_db1   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5432:5432   postgres
+ 2  docker exec -it server_db1 psql -U admin
+ 3  docker stop server_db1
+ 4  docker rm server_db1
+ 5  docker run -d   --name server_db1   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5432:5432   postgres
+ 6  docker exec -it server_db1 psql -U admin
+ 7  docker volume create pgdata
+ 8  docker volume ls
+ 9  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5433:5432   -v pgdata:/var/lib/postgresql/data   postgres
+10  docker exec -it server_db2 psql -U admin
+11  docker rm -f server_db2
+12  docker volume rm pgdata
+13  docker volume create pgdata
+14  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -p 5433:5432   -v pgdata:/var/lib/postgresql/data   postgres
+15  docker exec -it server_db2 psql -U postgres
+16  docker ps -a
+17  docker logs server_db2
+18  docker rm -f server_db2
+19  docker volume rm pgdata
+20  docker volume create pgdata
+21  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5433:5432   -v pgdata:/var/lib/postgresql   postgres
+22  docker exec -it server_db2 psql -U admin
+23  docker stop server_db2
+24  docker rm server_db2
+25  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5433:5432   -v pgdata:/var/lib/postgresql   postgres:16
+26  docker exec -it server_db2 psql -U admin
+27  docker rm -f server_db2
+28  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5433:5432   -v pgdata:/var/lib/postgresql   postgres:16
+29  docker exec -it server_db2 psql -U admin
+30  docker rm -f server_db1 server_db2
+31  docker volume rm pgdata
+32  docker run -d   --name server_db1   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5432:5432   postgres
+33  docker exec -it server_db1 psql -U admin
+34  docker stop server_db1
+35  docker rm server_db1
+36  docker run -d   --name server_db1   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5432:5432   postgres
+37  docker exec -it server_db1 psql -U admin
+38  docker volume create pgdata
+39  docker volume ls
+40  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5433:5432   -v pgdata:/var/lib/postgresql/data   postgres
+41  docker exec -it server_db2 psql -U admin
+42  docker rm -f server_db2
+43  docker volume rm pgdata
+44  docker volume create pgdata
+45  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5433:5432   -v pgdata:/var/lib/postgresql   postgres
+46  docker exec -it server_db2 psql -U admin
+47  docker stop server_db2
+48  docker rm server_db2
+49  docker run -d   --name server_db2   -e POSTGRES_PASSWORD=1234   -e POSTGRES_USER=admin   -p 5433:5432   -v pgdata:/var/lib/postgresql   postgres
+50  docker exec -it server_db2 psql -U admin
